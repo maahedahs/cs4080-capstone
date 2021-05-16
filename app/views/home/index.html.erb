@@ -1,6 +1,250 @@
-<div class="jumbotron">
-  <p>Pomona, CA</p>
-  <h1 class="display-4"><%= @currentTemp %>°</h1>
-  <p class="lead">Feels like <%= @feelsLikeTemp %>°</p>
-  <p class="lead">High/Low: <%= @highTemp %>°/<%= @lowTemp %>°</p>
+<head>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="container">
+	<h1>Weather in city []</h1>
+	<div class="jumbotron">
+	  	<p>Pomona, CA</p>
+	  	<h1 class="display-4"><%= @currentTemp %>°</h1>
+	  	<p class="lead">Feels like <%= @feelsLikeTemp %>°</p>
+	  	<p class="lead">High/Low: <%= @highTemp %>°/<%= @lowTemp %>°</p>
+	  	<p class="lead">Humidity: <%= @humidity %>%</p>
+	  	<ul class="nav nav-tabs" id="myTab" role="tablist" >
+			<li class="nav-item">
+		    <a class="nav-link active" id="temp-tab" data-toggle="tab" href="#temp" role="tab" aria-controls="temp" aria-selected="true">Temperature</a>
+		  	</li>
+		  	<li class="nav-item">
+		    <a class="nav-link" id="wind-tab" data-toggle="tab" href="#wind" role="tab" aria-controls="wind" aria-selected="false">Wind</a>
+		  	</li>
+		  	<li class="nav-item">
+		    <a class="nav-link" id="other-tab" data-toggle="tab" href="#other" role="tab" aria-controls="other" aria-selected="false">Other</a>
+		  	</li>
+		</ul>
+		<div class="tab-content" id="myTabContent">
+				<div class="tab-pane fade show active tab-bordered" id="temp" role="tabpanel" aria-labelledby="temp-tab">
+				<div class="table-responsive">
+				  <table class="table table-bordered">
+				  	  <thead class = "thead-dark">
+					    <tr>
+					      <th scope="col">Day</th>
+					      <th scope="col">Day</th>
+					      <th scope="col">Evening</th>
+					      <th scope="col">Night</th>
+					      <th scope="col">Weather Type</th>
+					    </tr>
+					  </thead>
+					  <tbody>
+					    <tr class="table-info">
+					      <th scope="row"><%= Date.today.strftime("%A") %></th>
+					      <td><%= @dailyDayTemp[0] %>°</td>
+					      <td><%= @dailyEveningTemp[0] %>°</td>
+					      <td><%= @dailyNightTemp[0]%>°</td>
+					      <td><%= @dailyWeatherType[0]%></td>
+					      
+					    </tr>
+					    <tr>
+					      <th scope="row"><%= (Date.today+1).strftime("%A") %></th>
+					      <td><%= @dailyDayTemp[1] %>°</td>
+					      <td><%= @dailyEveningTemp[1] %>°</td>
+					      <td><%= @dailyNightTemp[1]%>°</td>
+					      <td><%= @dailyWeatherType[1]%></td>
+					    </tr>
+					    <tr>
+					      <th scope="row"><%= (Date.today+2).strftime("%A") %></th>
+					      <td><%= @dailyDayTemp[2] %>°</td>
+					      <td><%= @dailyEveningTemp[2] %>°</td>
+					      <td><%= @dailyNightTemp[2]%>°</td>
+					      <td><%= @dailyWeatherType[2]%></td>
+
+					    </tr>
+					    <tr>
+					      <th scope="row"><%= (Date.today+3).strftime("%A") %></th>
+					      <td><%= @dailyDayTemp[3] %>°</td>
+					      <td><%= @dailyEveningTemp[3] %>°</td>
+					      <td><%= @dailyNightTemp[3]%>°</td>
+					      <td><%= @dailyWeatherType[3]%></td>
+					    </tr>
+					   	<tr>
+					      <th scope="row"><%= (Date.today+4).strftime("%A") %></th>
+					      <td><%= @dailyDayTemp[4] %>°</td>
+					      <td><%= @dailyEveningTemp[4] %>°</td>
+					      <td><%= @dailyNightTemp[4]%>°</td>
+					      <td><%= @dailyWeatherType[4]%></td>
+					    </tr>
+					    <tr>
+					      <th scope="row"><%= (Date.today+5).strftime("%A") %></th>
+					      <td><%= @dailyDayTemp[5] %>°</td>
+					      <td><%= @dailyEveningTemp[5] %>°</td>
+					      <td><%= @dailyNightTemp[5]%>°</td>
+					      <td><%= @dailyWeatherType[5]%></td>
+					    </tr>
+					    <tr>
+					      <th scope="row"><%= (Date.today+6).strftime("%A") %></th>
+					      <td><%= @dailyDayTemp[6] %>°</td>
+					      <td><%= @dailyEveningTemp[6] %>°</td>
+					      <td><%= @dailyNightTemp[6]%>°</td>
+					      <td><%= @dailyWeatherType[6]%></td>
+					    </tr>
+					    <tr>
+					      <th scope="row"><%= (Date.today+7).strftime("%A") %></th>
+					      <td><%= @dailyDayTemp[7] %>°</td>
+					      <td><%= @dailyEveningTemp[7] %>°</td>
+					      <td><%= @dailyNightTemp[7]%>°</td>
+					      <td><%= @dailyWeatherType[7]%></td>
+					    </tr>
+					  </tbody>
+				  	</table>
+				</div>
+				</div>
+
+			  <div class="tab-pane fade" id="wind" role="tabpanel" aria-labelledby="wind-tab">
+				<div class="table-responsive">
+				  <table class="table table-bordered">
+				  	  <thead class = "thead-dark">
+					    <tr>
+					      <th scope="col">Day</th>
+					      <th scope="col">Wind Speed</th>
+					      <th scope="col">Wind Direction</th>
+					      <th scope="col">Wind Gust</th>
+					    </tr>
+					  </thead>
+					  <tbody>
+					    <tr class="table-info">
+					      <th scope="row"><%= Date.today.strftime("%A") %></th>
+					      <td><%= @dailyWindSpeed[0] %> mph</td>
+					      <td><%= @dailyWindDirection[0] %>°</td>
+					      <td><%= @dailyWindGust[0]%> mph</td>
+					      
+					    </tr>
+					    <tr>
+					      <th scope="row"><%= (Date.today+1).strftime("%A") %></th>
+					      <td><%= @dailyWindSpeed[1] %> mph</td>
+					      <td><%= @dailyWindDirection[1] %>°</td>
+					      <td><%= @dailyWindGust[1]%> mph</td>
+					    </tr>
+					    <tr>
+					      <th scope="row"><%= (Date.today+2).strftime("%A") %></th>
+					      <td><%= @dailyWindSpeed[2] %> mph</td>
+					      <td><%= @dailyWindDirection[2] %>°</td>
+					      <td><%= @dailyWindGust[2]%> mph</td>
+
+					    </tr>
+					    <tr>
+					      <th scope="row"><%= (Date.today+3).strftime("%A") %></th>
+					      <td><%= @dailyWindSpeed[3] %> mph</td>
+					      <td><%= @dailyWindDirection[3] %>°</td>
+					      <td><%= @dailyWindGust[3]%> mph</td>
+					    </tr>
+					   	<tr>
+					      <th scope="row"><%= (Date.today+4).strftime("%A") %></th>
+					      <td><%= @dailyWindSpeed[4] %> mph</td>
+					      <td><%= @dailyWindDirection[4] %>°</td>
+					      <td><%= @dailyWindGust[4]%> mph</td>
+					    </tr>
+					    <tr>
+					      <th scope="row"><%= (Date.today+5).strftime("%A") %></th>
+					      <td><%= @dailyWindSpeed[5] %> mph</td>
+					      <td><%= @dailyWindDirection[5] %>°</td>
+					      <td><%= @dailyWindGust[5]%> mph</td>
+					    </tr>
+					    <tr>
+					      <th scope="row"><%= (Date.today+6).strftime("%A") %></th>
+					      <td><%= @dailyWindSpeed[6] %> mph</td>
+					      <td><%= @dailyWindDirection[6] %>°</td>
+					      <td><%= @dailyWindGust[6]%> mph</td>
+					    </tr>
+					    <tr>
+					      <th scope="row"><%= (Date.today+7).strftime("%A") %></th>
+					      <td><%= @dailyWindSpeed[7] %> mph</td>
+					      <td><%= @dailyWindDirection[7] %>°</td>
+					      <td><%= @dailyWindGust[7]%> mph</td>
+					    </tr>
+					  </tbody>
+				  	</table>
+				</div>
+			  </div>
+			  <div class="tab-pane fade" id="other" role="tabpanel" aria-labelledby="other-tab">
+			  	<div class="table-responsive">
+				  <table class="table table-bordered">
+				  	  <thead class = "thead-dark">
+					    <tr>
+					      <th scope="col">Day</th>
+					      <th scope="col">Pressure</th>
+					      <th scope="col">Humidity</th>
+					      <th scope="col">Dew Point</th>
+					    </tr>
+					  </thead>
+					  <tbody>
+					    <tr class="table-info">
+					      <th scope="row"><%= Date.today.strftime("%A") %></th>
+					      <td><%= @dailyPressure[0] %>hPa</td>
+					      <td><%= @dailyHumidity[0] %>%</td>
+					      <td><%= @dailyDewPoint[0]%>°</td>
+					      
+					    </tr>
+					    <tr>
+					      <th scope="row"><%= (Date.today+1).strftime("%A") %></th>
+					      <td><%= @dailyPressure[1] %>hPa</td>
+					      <td><%= @dailyHumidity[1] %>%</td>
+					      <td><%= @dailyDewPoint[1]%>°</td>
+					    </tr>
+					    <tr>
+					      <th scope="row"><%= (Date.today+2).strftime("%A") %></th>
+					      <td><%= @dailyPressure[2] %>hPa</td>
+					      <td><%= @dailyHumidity[2] %>%</td>
+					      <td><%= @dailyDewPoint[2]%>°</td>
+
+					    </tr>
+					    <tr>
+					      <th scope="row"><%= (Date.today+3).strftime("%A") %></th>
+					      <td><%= @dailyPressure[3] %>hPa</td>
+					      <td><%= @dailyHumidity[3] %>%</td>
+					      <td><%= @dailyDewPoint[3]%>°</td>
+					    </tr>
+					   	<tr>
+					      <th scope="row"><%= (Date.today+4).strftime("%A") %></th>
+					      <td><%= @dailyPressure[4] %>hPa</td>
+					      <td><%= @dailyHumidity[4] %>%</td>
+					      <td><%= @dailyDewPoint[4]%>°</td>
+					    </tr>
+					    <tr>
+					      <th scope="row"><%= (Date.today+5).strftime("%A") %></th>
+					      <td><%= @dailyPressure[5] %>hPa</td>
+					      <td><%= @dailyHumidity[5] %>%</td>
+					      <td><%= @dailyDewPoint[5]%>°</td>
+					    </tr>
+					    <tr>
+					      <th scope="row"><%= (Date.today+6).strftime("%A") %></th>
+					      <td><%= @dailyPressure[6] %>hPa</td>
+					      <td><%= @dailyHumidity[6] %>%</td>
+					      <td><%= @dailyDewPoint[6]%>°</td>
+					    </tr>
+					    <tr>
+					      <th scope="row"><%= (Date.today+7).strftime("%A") %></th>
+					      <td><%= @dailyPressure[7] %>hPa</td>
+					      <td><%= @dailyHumidity[7] %>%</td>
+					      <td><%= @dailyDewPoint[7]%>°</td>
+					    </tr>
+					  </tbody>
+				  	</table>
+				</div>
+			  </div>
+		  </div>
+		</div>
+
+
 </div>
+
+<style>
+	.jumbotron {
+
+		border:4px solid black;
+	}
+	.nav-link.active {
+		border: 3px solid black;
+	}
+</style>
+</body>

@@ -46,113 +46,118 @@ class HomeController < ApplicationController
 
     # Arrays with daily weather forecast info starting from index 1 to 7
     @dailyLowTemp = Array.new(8)
-    for i in 1..7
+    for i in 0..7
       @dailyLowTemp[i] = @output['daily'][i].dig('temp','min')
     end
     
     @dailyHighTemp = Array.new(8)
-    for i in 1..7
+    for i in 0..7
       @dailyHighTemp[i] = @output['daily'][i].dig('temp','max')
     end
 
     @dailyDayTemp = Array.new(8)
-    for i in 1..7
+    for i in 0..7
       @dailyDayTemp[i] = @output['daily'][i].dig('temp','day')
     end
 
     @dailyNightTemp = Array.new(8)
-    for i in 1..7
+    for i in 0..7
       @dailyNightTemp[i] = @output['daily'][i].dig('temp','night')
     end
 
     @dailyEveningTemp = Array.new(8)
-    for i in 1..7
+    for i in 0..7
       @dailyEveningTemp[i] = @output['daily'][i].dig('temp','eve')
     end
 
     @dailyMorningTemp = Array.new(8)
-    for i in 1..7
+    for i in 0..7
       @dailyMorningTemp[i] = @output['daily'][i].dig('temp','morn')
     end
 
     @feelsLikeDailyDay = Array.new(8)
-    for i in 1..7
+    for i in 0..7
       @feelsLikeDailyDay[i] = @output['daily'][i].dig('feels_like','day')
     end
 
     @feelsLikeDailyEvening = Array.new(8)
-    for i in 1..7
+    for i in 0..7
       @feelsLikeDailyEvening[i] = @output['daily'][i].dig('feels_like','eve')
     end
 
     @feelsLikeDailyNight = Array.new(8)
-    for i in 1..7
+    for i in 0..7
       @feelsLikeDailyNight[i] = @output['daily'][i].dig('feels_like','night')
     end
 
     @feelsLikeDailyMorning = Array.new(8)
-    for i in 1..7
+    for i in 0..7
       @feelsLikeDailyMorning[i] = @output['daily'][i].dig('feels_like','morning')
     end
 
     @dailyWeatherType = Array.new(8)
-    for i in 1..7
+    for i in 0..7
       @tempArray = @output['daily']
       @dailyWeatherType[i] = @output['daily'][i]['weather'][0]['main']
     end
 
     @dailyWeatherDescription = Array.new(8)
-    for i in 1..7
+    for i in 0..7
       @dailyWeatherDescription[i] = @output['daily'][i]['weather'][0]['description']
     end
 
     @dailySunrise = Array.new(8)
-    for i in 1..7
+    for i in 0..7
       @dailySunrise[i] = @output['daily'][i]['sunrise']
     end
 
     @dailySunset = Array.new(8)
-    for i in 1..7
+    for i in 0..7
       @dailySunset[i] = @output['daily'][i]['sunset']
     end
 
     @dailyPressure = Array.new(8)
-    for i in 1..7
+    for i in 0..7
       @dailyPressure[i] = @output['daily'][i]['pressure']
     end
 
     @dailyHumidity = Array.new(8)
-    for i in 1..7
+    for i in 0..7
       @dailyHumidity[i] = @output['daily'][i]['humidity']
     end
 
     @dailyDewPoint = Array.new(8)
-    for i in 1..7
+    for i in 0..7
       @dailyDewPoint[i] = @output['daily'][i]['dew_point']
     end
 
     @dailyWindSpeed = Array.new(8)
-    for i in 1..7
+    for i in 0..7
       @dailyWindSpeed[i] = @output['daily'][i]['wind_speed']
     end
 
     @dailyWindDirection = Array.new(8)
-    for i in 1..7
+    for i in 0..7
       @dailyWindDirection[i] = @output['daily'][i]['wind_deg']
     end
 
+    @dailyWindGust = Array.new(8)
+    for i in 0..7
+      @dailyWindGust[i] = @output['daily'][i]['wind_gust']
+    end
+
     @dailyClouds = Array.new(8)
-    for i in 1..7
+    for i in 0..7
       @dailyClouds[i] = @output['daily'][i]['clouds']
     end
 
     @dailyChanceOfPrecipitation = Array.new(8)
-    for i in 1..7
+    for i in 0..7
       @dailyChanceOfPrecipitation[i] = @output['daily'][i]['pop']
     end
 
     @dailyUVIndex = Array.new(8)
-    for i in 1..7
+    for i in 0..7
       @dailyUVIndex[i] = @output['daily'][i]['uvi']
     end
 
