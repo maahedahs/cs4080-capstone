@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   
  
    #this will match/route any 404 erros to the invalid search error we have custom made. 
-  match "/404", to: "errors#invalid_search"
+  get '/404', to: 'errors#invalid_search'
   
   # get 'home/index'
   root 'home#index'
