@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   
-  #this will match/route any 404 erros to the invalid search error we have custom made. 
+ 
+  devise_for :users
+   #this will match/route any 404 erros to the invalid search error we have custom made. 
   match "/404", to: "errors#invalid_search", via: all
   
   # get 'home/index'
