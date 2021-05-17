@@ -5,13 +5,34 @@
 </head>
 <body>
 <div class="container">
+
 	<h1>Weather in city []</h1>
 	<div class="jumbotron">
-	  	<p>Pomona, CA</p>
-	  	<h1 class="display-4"><%= @currentTemp %>°</h1>
-	  	<p class="lead">Feels like <%= @feelsLikeTemp %>°</p>
-	  	<p class="lead">High/Low: <%= @highTemp %>°/<%= @lowTemp %>°</p>
-	  	<p class="lead">Humidity: <%= @humidity %>%</p>
+		<div style="display:flex;">
+			<div class="float-child">
+		  	<p>Pomona, CA</p>
+		  	<h1 class="display-4"><%= @currentTemp %>°</h1>
+		  	<p class="lead">Feels like <%= @feelsLikeTemp %>°</p>
+		  	<p class="lead">High/Low: <%= @highTemp %>°/<%= @lowTemp %>°</p>
+		  	</div>
+		  	
+		  	<div class="float-child">
+		  	<div style="float:right;width:100%;">
+		  	<% if @dailyWeatherType[0] == "Clear" -%>
+		  			<%=image_tag("happysun.png",width:'280px',height:'240px',style:'float:right;margin:0px;padding:0px;')%>
+		  	<%elsif @dailyWeatherType[0] == "Clouds" -%>
+		  			<%=image_tag("suncloud.png",width:'280px',height:'240px',style:'float:right;margin:0px;padding:0px;')%>
+		  	<%elsif @dailyWeatherType[0] == "Rain" -%>
+		  			<%=image_tag("rain.png",width:'280px',height:'240px',style:'float:right;margin:0px;padding:0px;')%>
+		  	<% end -%>
+		  	
+			<!--<%=image_tag("happysun.png")%> -->
+			<!--<%=image_tag("suncloud.png")%> -->
+			<!--<%=image_tag("rain.png")%> -->
+			</div>
+			<div style="float:right;"><p class="lead"><%= Time.new.ctime %></p></div>
+		 	</div>
+	 	</div>
 	  	<ul class="nav nav-tabs" id="myTab" role="tablist" >
 			<li class="nav-item">
 		    <a class="nav-link active" id="temp-tab" data-toggle="tab" href="#temp" role="tab" aria-controls="temp" aria-selected="true">Temperature</a>
@@ -245,6 +266,9 @@
 	}
 	.nav-link.active {
 		border: 3px solid black;
+	}
+	.float-child {
+		flex:1;
 	}
 </style>
 </body>
