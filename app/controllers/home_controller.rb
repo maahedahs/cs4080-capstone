@@ -3,9 +3,10 @@ class HomeController < ApplicationController
   	require 'net/http'
   	require 'json'
 
-    # latitude and longitude for Pomona
-    @latitude = "34.05434193913132"
-    @longitude = "-117.74848495107845"
+    @city = "Pomona"
+    @locationResult = Geocoder.search(@city)
+    @latitude = @locationResult.first.coordinates[0]
+    @longitude = @locationResult.first.coordinates[1]
 
   	@url = "https://api.openweathermap.org/data/2.5/onecall?lat=#{@latitude}&lon=#{@longitude}&exclude=minutely,alerts&units=imperial&appid=13f713d7a3c11fced5d5ebbe7d46b876"
   	@uri = URI(@url)
