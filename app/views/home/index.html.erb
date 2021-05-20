@@ -6,16 +6,14 @@
 <body>
 <div class="container">
 
-	<h1>Weather in city []</h1>
+	<h2>Weather in <%= @city %></h2>
 	<div class="jumbotron">
 		<div style="display:flex;">
 			<div class="float-child">
-		  	<p>Pomona, CA</p>
 		  	<h1 class="display-4"><%= @currentTemp %>°</h1>
 		  	<p class="lead">Feels like <%= @feelsLikeTemp %>°</p>
 		  	<p class="lead">High/Low: <%= @highTemp %>°/<%= @lowTemp %>°</p>
 		  	</div>
-		  	
 		  	<div class="float-child">
 		  	<div style="float:right;width:100%;">
 		  	<% if @dailyWeatherType[0] == "Clear" -%>

@@ -3,19 +3,31 @@ class HomeController < ApplicationController
   	require 'net/http'
   	require 'json'
 
-    @city = "Pomona"
-    @locationResult = Geocoder.search(@city)
-    @latitude = @locationResult.first.coordinates[0]
-    @longitude = @locationResult.first.coordinates[1]
+    # searches for weather for Pomona as default
+    if params[:search].blank?
+      $search = "Pomona"
+    else
+      $search = params[:search]
+    end
+
+    # Use Geocoder gem to get coordinates and location name
+    @locationResult = Array.new
+    @locationResult = Geocoder.search($search)
+    if @locationResult.blank?
+      redirect_to "/errors/invalid_search" and return   # redirect to error page search is invalid
+    else
+      @latitude = @locationResult.first.coordinates[0]
+      @longitude = @locationResult.first.coordinates[1]
+      @city = @locationResult.first.address
+    end
 
   	@url = "https://api.openweathermap.org/data/2.5/onecall?lat=#{@latitude}&lon=#{@longitude}&exclude=minutely,alerts&units=imperial&appid=13f713d7a3c11fced5d5ebbe7d46b876"
   	@uri = URI(@url)
   	@response = Net::HTTP.get(@uri)
   	@output = JSON.parse(@response)
 
-  	@today = @output['daily'][0]
-
     # Current weather data for today
+    @today = @output['daily'][0]
     @currentTemp = @output.dig('current', 'temp') 
     @feelsLikeTemp = @output.dig('current', 'feels_like')
     @currentTime = @today['dt']
